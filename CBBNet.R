@@ -1,6 +1,4 @@
-# Load required packages
-if (!require("tidyverse")) install.packages("tidyverse", repos = "https://cloud.r-project.org")
-if (!require("rvest")) install.packages("rvest", repos = "https://cloud.r-project.org")
+install.packages(c("tidyverse", "rvest"), repos = "https://cloud.r-project.org")
 
 library(tidyverse)
 library(rvest)
@@ -33,44 +31,29 @@ if (!"Rank" %in% names(data)) stop("Rank column not found!")
 
 model <- lm(Rank ~ Record + Road + Neutral + `Quad 1` + `Quad 2` + `Quad 3` + `Quad 4`, 
             data = data)
-summary(model)
 
 check_school_rank <- function(school_stats, actual_rank = NA) {
   pred <- predict(model, newdata = school_stats)
+  
   if (!is.na(actual_rank)) {
     cat("Predicted Rank:", round(pred, 1), "| Actual Rank:", actual_rank, "\n")
+    
     diff <- round(pred - actual_rank, 1)
+    
     if (abs(diff) <= 5) {
       cat("The school is properly ranked!\n")
+    } else if (diff > 5) {
+      cat("The school may be overrated (Difference:", abs(diff), "Spots)\n")
     } else {
-      cat("The school may be over- or under-ranked (Difference:", diff, ")\n")
+      cat("The school may be underrated (Difference:", abs(diff), "Spots)\n")
     }
-  } else {
-    cat("Predicted Rank:", round(pred, 1), "\n")
   }
-  return(pred)
 }
 
-syracuse_stats <- tibble(
-  Record = 0.655172,
-  Road = 0.4,
-  Neutral = 0.333333,
-  `Quad 1` = 0.222222,
-  `Quad 2` = 0.666667,
-  `Quad 3` = 0.9,
-  `Quad 4` = 1.0
-)
+cuse <- data[data$School=='Syracuse',]
 
-check_school_rank(syracuse_stats, actual_rank = 83)
+cuse_rank <- cuse$Rank
+cuse_stats <- cuse %>%
+  select(Record, Road, Neutral, `Quad 1`, `Quad 2`, `Quad 3`, `Quad 4`)
 
-nc_stats <- tibble(
-  Record = 0.853103,
-  Road = 0.777778,
-  Neutral = 0.5,
-  `Quad 1` = 0.6,
-  `Quad 2` = 0.75,
-  `Quad 3` = 1.0,
-  `Quad 4` = 1.0
-)
-
-check_school_rank(nc_stats, actual_rank = 10)
+check_school_rank(cuse_stats, actual_rank = cuse_rank)
