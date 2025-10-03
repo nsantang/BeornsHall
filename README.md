@@ -3,4 +3,4 @@
   
 - **DCF_Calc:** A code that allows you to get a basic Discounted Cash Flow evaluation using the tidyquant API
 - **CBBnet:** A regression-based ML algorithm that takes Kenpom's latest CBB rankings and creates an Expected vs Actual ranking. Proving they have bias for my Syracuse Orange!
-
+- **CBBnet_vol2:** Utilizes XGBoost as well as the same LR engine to validate the findings
