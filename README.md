@@ -1,7 +1,7 @@
 # BeornsHall
 
 **About Me**
-Quantitative analyst with a background in financial modeling, systematic strategies, and machine learning. All projects are independently built and validated against real data. Currently transitioning from marketing analytics into quantitative finance and investment research.
+- Quantitative analyst with a background in financial modeling, systematic strategies, and machine learning. All projects are independently built and validated against real data. Currently transitioning from marketing analytics into quantitative finance and investment research.
 
 **This is my person portfolio. Please don't take or misappropriate anything on here!**
 
