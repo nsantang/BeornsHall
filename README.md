@@ -1,4 +1,8 @@
 # BeornsHall
+
+**About Me**
+Quantitative analyst with a background in financial modeling, systematic strategies, and machine learning. All projects are independently built and validated against real data. Currently transitioning from marketing analytics into quantitative finance and investment research.
+
 **This is my person portfolio. Please don't take or misappropriate anything on here!**
 
 - **MomentumStrat_RiskAnalysis:** Cross-sectional sector momentum strategy built in R. Ranks SPY, QQQ, XLF, XLK, XLE, and XLV by 90-day price momentum, holds the top 2 sectors, and rebalances daily. Includes volatility targeting (15% annualized), turnover-based transaction costs, and a 10% drawdown circuit breaker. Validated with an in-sample/out-of-sample split at 2021. Benchmarked against SPY buy-and-hold.
